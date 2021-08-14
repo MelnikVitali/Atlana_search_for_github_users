@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/Atlana_search_for_github_users/static/js/main.2bf47e24.chunk.js",
-    "main.js.map": "/Atlana_search_for_github_users/static/js/main.2bf47e24.chunk.js.map",
+    "main.js": "/Atlana_search_for_github_users/static/js/main.be22687f.chunk.js",
+    "main.js.map": "/Atlana_search_for_github_users/static/js/main.be22687f.chunk.js.map",
     "runtime-main.js": "/Atlana_search_for_github_users/static/js/runtime-main.f7c2e4f3.js",
     "runtime-main.js.map": "/Atlana_search_for_github_users/static/js/runtime-main.f7c2e4f3.js.map",
     "static/css/2.68b64559.chunk.css": "/Atlana_search_for_github_users/static/css/2.68b64559.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.f7c2e4f3.js",
     "static/css/2.68b64559.chunk.css",
     "static/js/2.1a53c8f5.chunk.js",
-    "static/js/main.2bf47e24.chunk.js"
+    "static/js/main.be22687f.chunk.js"
   ]
 }
