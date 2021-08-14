@@ -3,7 +3,7 @@
 .idea
 *.log
 .package-lock.json
-yarn.lock
+#yarn.lock
 # dependencies
 /node_modules
 /.pnp
