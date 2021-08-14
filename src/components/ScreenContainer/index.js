@@ -26,10 +26,10 @@ const ScreenContainer = () => {
               className={classes.container}
         >
             <UsersScreen />
-            {
-                queriedUsers.length !== 0 &&  isOpenDisplayUser                &&
-                <CurrentUserScreen />
-            }
+            {/*{*/}
+            {/*    queriedUsers.length !== 0 &&  isOpenDisplayUser                &&*/}
+            {/*     <CurrentUserScreen />*/}
+            {/*}*/}
 
         </Grid >
         // </Container >
