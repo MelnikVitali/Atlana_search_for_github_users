@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "gh-pages": "^3.2.3",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
