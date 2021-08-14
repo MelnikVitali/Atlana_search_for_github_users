@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "author": "Vitalii Melnyk",
-  "description": "processica client react.js full-stack test task",
+  "description": "atlana github searcher",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/MelnikVitali/Processica_Full-stack_test-task_client"
   },
+  "homepage": "https://MelnikVitali.github.io/Atlana_search_for_github_users",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
@@ -29,6 +30,8 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
