@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
         marginLeft: pxToRem(36),
         marginRight: pxToRem(36),
     },
+    bio:{
+        paddingLeft:pxToRem(12)
+    },
     large: {
         width: pxToRem(160),
         height: pxToRem(160),

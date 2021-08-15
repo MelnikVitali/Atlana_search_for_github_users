@@ -4,9 +4,9 @@ import debounce from 'lodash.debounce';
 import { Avatar, Box, CircularProgress, Grid, Paper, Typography } from '@material-ui/core';
 import SearchBar from 'material-ui-search-bar';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { clearResults, usersSelector } from '../../store/usersReducers';
+import { clearResults, fetchCurrentUserRepos, usersSelector } from '../../store/usersReducers';
 
 import useStyles from './styles';
 import ReposItem from '../ReposItem';
@@ -21,9 +21,21 @@ const CurrentUserScreen = () => {
         currentUser,
         isOpenDisplayUser
     } = useSelector(usersSelector);
-
+    const dispatch = useDispatch();
     const [value, setValue] = useState('');
     const [dbValue, saveToDb] = useState('');
+
+
+
+    useEffect(() => {
+
+        if (users.hasOwnProperty(currentUser) && users[currentUser].repos.length === 0 ) {
+            dispatch((fetchCurrentUserRepos(currentUser, users)));
+        }
+        return () => {
+            cancelSearch();
+        };
+    }, [currentUser]);
 
     const {user, repos} = users[currentUser];
 
@@ -53,11 +65,10 @@ const CurrentUserScreen = () => {
         debouncedSave('');
     };
 
-    useEffect(() => {
-        return () => {
-            cancelSearch();
-        };
-    }, [user]);
+    console.log('currentUser', currentUser);
+    console.log('users', users);
+
+
 
 
     return isOpenDisplayUser && (
@@ -105,7 +116,7 @@ const CurrentUserScreen = () => {
 
                             </Grid >
                             <Grid item xs={12} md={12} >
-                                <Typography >
+                                <Typography className={classes.bio}>
                                     {user.bio}
                                 </Typography >
                             </Grid >
@@ -122,7 +133,7 @@ const CurrentUserScreen = () => {
                             className={classes.searchBar}
                         />
                     </Grid >
-                    {loading && isCurrentUserRepos && (
+                    {loading &&  (
                         <Box className={classes.preloader} >
                             <CircularProgress
                                 thickness={5}

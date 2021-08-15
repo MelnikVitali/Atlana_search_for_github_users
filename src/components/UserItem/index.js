@@ -1,27 +1,16 @@
-import React, { useEffect } from 'react';
-import { Avatar, Box, Button, CircularProgress, Grid, Paper, Typography } from '@material-ui/core';
+import React from 'react';
+import { Avatar,  Button,  Grid, Paper, Typography } from '@material-ui/core';
 import useStyles from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentUser, usersSelector } from '../../store/usersReducers';
+import {  useSelector } from 'react-redux';
+import {  usersSelector } from '../../store/usersReducers';
 
-const UserItem = React.memo(({user, handleDisplayCurrentUser}) => {
+const UserItem = ({user, handleDisplayCurrentUser}) => {
     const classes = useStyles();
 
-    const dispatch = useDispatch();
-
-    const {loading, isCurrentUsers, queriedUsers, currentUsers, users} = useSelector(usersSelector);
-
-    useEffect(() => {
-        console.log(!users[user.login]);
-        if (Object.keys(users).length === 0 || !users[user.login]) {
-            dispatch(fetchCurrentUser(user.login));
-        }
-    }, [queriedUsers]);
-
-    console.log('renderuserItem');
+    const {loading,  users} = useSelector(usersSelector);
 
     return (
-        <Paper className={classes.paper} >
+        <Paper className={classes.paper} data-aos="fade-right">
             <Button
                 fullWidth
                 onClick={() => handleDisplayCurrentUser(user.login, users)}
@@ -40,28 +29,16 @@ const UserItem = React.memo(({user, handleDisplayCurrentUser}) => {
                         </Typography >
                     </Grid >
                     <Grid item xs={12} sm={2} md={2} >
-
-                        {loading && (
-                            <Box className={classes.preloader} >
-                                <CircularProgress
-                                    thickness={5}
-                                    size={36}
-                                    color="secondary"
-                                />
-                            </Box >
-                        )}
-                        {!loading && (users[user.login]) && (
+                        {!loading  && (users[user.login])  &&(
                             <Typography noWrap className={classes.repos} >
-                                Repo: {users[user.login].user.public_repos}
+                                Repo:&nbsp;{users[user.login].user.public_repos === 0 ? 0 : users[user.login].user.public_repos}
                             </Typography >
                         )}
-
                     </Grid >
-
                 </Grid >
             </Button >
         </Paper >
     );
-});
+};
 
 export default UserItem;

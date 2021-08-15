@@ -3,7 +3,6 @@ import { pxToRem } from '../../utils/pxToRem';
 const {makeStyles} = require('@material-ui/core');
 const useStyles = makeStyles(theme => ({
     container: {
-        position:'relative',
         padding: pxToRem(3),
         width: '100%',
         flexGrow: 1
@@ -11,9 +10,17 @@ const useStyles = makeStyles(theme => ({
     paper: {
         backgroundColor: theme.palette.background.default,
     },
+    titleContainer:{
+      display:'flex',
+      flexWrap:'nowrap'
+    },
     title: {
+        flexGrow: 1,
         fontWeight: 500,
         letterSpacing: pxToRem(0.2)
+    },
+    searchBarContainer:{
+        position: 'relative'
     },
     searchBar: {
         margin: `${pxToRem(18)} ${pxToRem(36)} ${pxToRem(28)}`,
@@ -27,9 +34,11 @@ const useStyles = makeStyles(theme => ({
         },
     },
     preloader: {
-        position:'absolute',
-        top:pxToRem(66),
-        left:pxToRem(18)
+
+        // position:'absolute',
+        // bottom:0
+        // top:pxToRem(66),
+        // left:pxToRem(18)
         // margin: `0  ${pxToRem(40)}  ${pxToRem(12)}`,
     },
 
