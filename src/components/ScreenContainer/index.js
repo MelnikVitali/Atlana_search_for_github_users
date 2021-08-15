@@ -1,31 +1,32 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { Grid } from '@material-ui/core';
 
 import UsersScreen from '../UsersScreen';
 import CurrentUserScreen from '../CurrentUserScreen';
 
-import useStyles from './styles';
-import { useSelector } from 'react-redux';
 import { usersSelector } from '../../store/usersReducers';
+
+import useStyles from './styles';
 
 const ScreenContainer = () => {
     const classes = useStyles();
 
-    const {queriedUsers, isOpenDisplayUser} = useSelector(usersSelector);
+    const {isOpenDisplayUser} = useSelector(usersSelector);
 
     return (
-        <Grid container
-              component="main"
-              spacing={2}
-              className={classes.container}
-        >
-            <UsersScreen />
-            {
-                queriedUsers.length !== 0 && isOpenDisplayUser &&
-                <CurrentUserScreen />
-            }
+            <Grid container
+                  component="main"
 
-        </Grid >
+                  className={classes.container}
+            >
+                <UsersScreen />
+                {
+                    isOpenDisplayUser &&
+                    <CurrentUserScreen />
+                }
+            </Grid >
     );
 };
 

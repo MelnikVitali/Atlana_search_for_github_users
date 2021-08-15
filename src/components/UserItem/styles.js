@@ -1,6 +1,7 @@
 import { pxToRem } from '../../utils/pxToRem';
 
 const {makeStyles} = require('@material-ui/core');
+
 const useStyles = makeStyles(theme => ({
     paper: {
         backgroundColor: theme.palette.background.default,
@@ -18,13 +19,13 @@ const useStyles = makeStyles(theme => ({
     },
     userName: {
         textAlign:'left',
-        paddingLeft: pxToRem(30),
-        [theme.breakpoints.down('sm')]: {
-            paddingLeft: pxToRem(25),
-        },
-        [theme.breakpoints.down('xs')]: {
-            paddingLeft: pxToRem(12),
-        },
+        // paddingLeft: pxToRem(30),
+        // [theme.breakpoints.down('sm')]: {
+        //     paddingLeft: pxToRem(25),
+        // },
+        // [theme.breakpoints.down('xs')]: {
+        //     paddingLeft: pxToRem(12),
+        // },
     },
     repos: {
         textAlign: 'right'

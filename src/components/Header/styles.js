@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
     toolBar: {
         width: '100%',
-        // paddingLeft: theme.spacing(10),
+        height:'100%',
         display: 'flex',
     },
     menuButton: {

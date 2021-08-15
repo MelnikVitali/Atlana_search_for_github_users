@@ -81,6 +81,9 @@ const theme = createTheme({
             top: pxToRem(-4.5),
         }
     },
+    'MuiGrid-spacing-xs-2':{
+        margin: 0
+    }
 });
 
 export default theme;

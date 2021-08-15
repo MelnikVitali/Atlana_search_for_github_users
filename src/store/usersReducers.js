@@ -8,7 +8,6 @@ export const initialState = {
     loading: false,
     error: null,
     queriedUsers: [],
-    currentUsers: [],
     isCurrentUsers: false,
     currentUser: null,
     isCurrentUserRepos: false,
@@ -26,6 +25,7 @@ const usersSlice = createSlice({
         getUsersSuccess: (state, {payload}) => {
             state.queriedUsers = payload;
             state.isOpenDisplayUser = false;
+            state.isCurrentUsers = false;
             state.loading = false;
             state.errorMessage = null;
         },
@@ -36,39 +36,41 @@ const usersSlice = createSlice({
             }, {});
 
             state.users = {...state.users, ...newUsers};
-            // state.queriedUsers = [];
+            state.isOpenDisplayUser = false;
             state.loading = false;
+            state.isCurrentUsers = true;
             state.error = null;
         },
-        getCurrentUserSuccess: (state, {payload}) => {
-            state.users = {
-                ...state.users,
-                [payload.login]: {
-                    user: {
-                        ...payload
-                    },
-                    repos: []
-                }
-            };
-            state.loading = false;
-            state.error = null;
-            // state.isCurrentUserRepos = true;
-        },
-        getCurrentUserReposSuccess: (state, {payload}) => {
-            if (payload.length !== 0) {
-                const login = payload[0].owner.login;
-
-                state.users[login].repos = payload;
+        // getCurrentUserSuccess: (state, {payload}) => {
+        //     state.users = {
+        //         ...state.users,
+        //         [payload.login]: {
+        //             user: {
+        //                 ...payload
+        //             },
+        //             repos: []
+        //         }
+        //     };
+        //     state.loading = false;
+        //     state.error = null;
+        // },
+        getCurrentUserReposSuccess: (state, {payload: {repos, login}}) => {
+            if (repos.length === 0) {
+                state.users[login].repos = null;
+            } else {
+                state.users[login].repos = repos;
             }
 
             state.loading = false;
             state.error = null;
+            state.isOpenDisplayUser = true;
             state.isCurrentUserRepos = true;
+            state.currentUser = login;
         },
 
         getCurrentUser: (state, {payload}) => {
             state.currentUser = payload;
-            state.isCurrentUserRepos = false;
+            state.isCurrentUsers = true;
         },
         getError: (state, {payload}) => {
             state.loading = false;
@@ -82,8 +84,15 @@ const usersSlice = createSlice({
             state.isCurrentUserRepos = false;
             state.isOpenDisplayUser = false;
         },
-        toggleDisplayCurrentUser: state => {
-            state.isOpenDisplayUser = true
+        toggleDisplayCurrentUser: (state, {payload}) => {
+            if (payload) {
+                state.isOpenDisplayUser = payload
+            } else {
+                state.isCurrentUsers = false;
+                state.currentUser = null;
+                state.isCurrentUserRepos = false;
+                state.isOpenDisplayUser = false;
+            }
         }
     }
 });
@@ -93,7 +102,7 @@ export const {
     getUsersSuccess,
     getCurrentUsersSuccess,
     getCurrentUser,
-    getCurrentUserSuccess,
+    // getCurrentUserSuccess,
     getCurrentUserReposSuccess,
     getError,
     clearResults,
@@ -149,33 +158,16 @@ export const fetchCurrentUsers = (queriedUsers, users) => {
     };
 };
 
-// export const fetchCurrentUser = (login) => {
-//     return async dispatch => {
-//         dispatch(startLoading());
-//         try {
-//             const response = await axios.get(`${APIUrls.searchUser}${login}?${APIUrls.gitHubQuerySettingsUsers}`);
-//
-//             if (response) {
-//                 dispatch(getCurrentUserSuccess(response.data));
-//             }
-//         } catch (error) {
-//             toast.error(error?.message);
-//
-//             dispatch(getError(error?.message));
-//         }
-//     };
-// };
-
 export const fetchCurrentUserRepos = (login, users) => {
-    console.log('5555', login);
     return async dispatch => {
         dispatch(startLoading());
+
         try {
-            if (users[login].repos.length === 0 || !(users.hasOwnProperty(login))) {
+            if ((users[login].repos && users[login].repos.length === 0) || !(users.hasOwnProperty(login))) {
                 const response = await axios.get(`${APIUrls.searchUser}${login}${APIUrls.gitHubQuerySettingsRepos}`);
 
                 if (response) {
-                    dispatch(getCurrentUserReposSuccess(response.data));
+                    await dispatch(getCurrentUserReposSuccess({login, repos: response.data}));
                 }
             } else {
                 return false;
