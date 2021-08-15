@@ -116,7 +116,6 @@ export const fetchQueriedUsers = (searchParams) => {
     };
 };
 
-
 export const fetchCurrentUsers = (queriedUsers, users) => {
     return async dispatch => {
         dispatch(startLoading());
@@ -133,7 +132,7 @@ export const fetchCurrentUsers = (queriedUsers, users) => {
                     }
                 }
 
-                return await Promise.all(currentUsers);
+                return Promise.all(currentUsers);
             };
 
             await getUsers(queriedUsers, users).then(data => dispatch(getCurrentUsersSuccess(data)));
