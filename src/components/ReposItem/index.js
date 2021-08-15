@@ -1,16 +1,18 @@
 import React from 'react';
+
 import { Button, Grid, Link, Paper, Typography } from '@material-ui/core';
+
 import useStyles from './styles';
 
-const ReposItem = React.memo(({loading, repo}) => {
+const ReposItem = ({repo}) => {
     const classes = useStyles();
 
     return (
 
-            <Paper className={classes.paper} >
-                <Link href={repo.html_url}  underline="none"  className={classes.link}>
+        <Paper className={classes.paper} >
+            <Link href={repo.html_url} underline="none" className={classes.link} >
                 <Button fullWidth >
-                    <Grid container className={classes.gridContainer} justifyContent="space-between" >
+                    <Grid container className={classes.gridContainer} spacing={2} justifyContent="space-between" >
                         <Grid >
                             <Typography >
                                 {repo.name}
@@ -29,11 +31,9 @@ const ReposItem = React.memo(({loading, repo}) => {
                     </Grid >
 
                 </Button >
-                </Link >
-            </Paper >
-
-
+            </Link >
+        </Paper >
     );
-});
+};
 
 export default ReposItem;

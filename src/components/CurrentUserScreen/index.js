@@ -1,15 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import { Avatar, Box, CircularProgress, Grid, Paper, Typography } from '@material-ui/core';
+import { Avatar,  Grid, LinearProgress, Paper, Typography } from '@material-ui/core';
 import SearchBar from 'material-ui-search-bar';
 
-import { useSelector } from 'react-redux';
+import ReposItem from '../ReposItem';
 
-import { clearResults, usersSelector } from '../../store/usersReducers';
+import {  usersSelector } from '../../store/usersReducers';
 
 import useStyles from './styles';
-import ReposItem from '../ReposItem';
 
 const CurrentUserScreen = () => {
     const classes = useStyles();
@@ -17,11 +18,9 @@ const CurrentUserScreen = () => {
     const {
         loading,
         users,
-        isCurrentUserRepos,
         currentUser,
         isOpenDisplayUser
     } = useSelector(usersSelector);
-
     const [value, setValue] = useState('');
     const [dbValue, saveToDb] = useState('');
 
@@ -29,12 +28,19 @@ const CurrentUserScreen = () => {
 
     let filteredRepos = repos;
 
-    if (dbValue !== '' && repos.length !== 0) {
+    useEffect(() => {
+        return () => {
+            cancelSearch();
+        };
+    }, [currentUser]);
+
+
+    if (dbValue !== '' && (repos && repos.length !== 0)) {
         filteredRepos = repos.filter((repo) => {
             return repo.name.toLowerCase().includes(dbValue.toLowerCase());
         });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     const debouncedSave = useCallback(
         debounce(nextValue => saveToDb(nextValue), 1000),
         []); // will be created only once initially
@@ -45,23 +51,14 @@ const CurrentUserScreen = () => {
 
         debouncedSave(nextValue);
     };
-
-
     const cancelSearch = () => {
         saveToDb('');
         setValue('');
         debouncedSave('');
     };
 
-    useEffect(() => {
-        return () => {
-            cancelSearch();
-        };
-    }, [user]);
-
-
     return isOpenDisplayUser && (
-        <Grid item sm={6} >
+        <Grid item sm={6} data-aos="fade-left" >
             <Paper className={classes.paper} elevation={3} >
                 <Grid container direction="column" className={classes.container} >
                     <Grid item >
@@ -70,9 +67,8 @@ const CurrentUserScreen = () => {
                         </Typography >
                     </Grid >
 
-                    <Grid item xs={12} sm={3} md={12} >
-
-                        <Grid container alignItems="center" spacing={2} >
+                    <Grid item xs={12}  md={12} >
+                        <Grid container alignItems="center" spacing={2} className={classes.containerUser}>
                             <Grid item md={6} >
                                 <Avatar
                                     alt={user.login}
@@ -99,20 +95,19 @@ const CurrentUserScreen = () => {
                                         {user.followers} &nbsp; Followers
                                     </Typography >
                                     <Typography >
-                                        Followers &nbsp;{user.following}
+                                        Following &nbsp;{user.following}
                                     </Typography >
                                 </Grid >
 
                             </Grid >
                             <Grid item xs={12} md={12} >
-                                <Typography >
+                                <Typography className={classes.bio} >
                                     {user.bio}
                                 </Typography >
                             </Grid >
                         </Grid >
                     </Grid >
-
-                    <Grid item >
+                    <Grid item className={classes.searchContainer}>
                         <SearchBar
                             value={value}
                             placeholder="Search for User's Repositories"
@@ -121,19 +116,13 @@ const CurrentUserScreen = () => {
                             onRequestSearch={cancelSearch}
                             className={classes.searchBar}
                         />
+                        {loading && (
+                            <LinearProgress color="secondary" className={classes.preloader} />
+                        )}
                     </Grid >
-                    {loading && isCurrentUserRepos && (
-                        <Box className={classes.preloader} >
-                            <CircularProgress
-                                thickness={5}
-                                size={36}
-                                color="secondary"
-                            />
-                        </Box >
-                    )}
 
-                    {repos.length !== 0 && (
-                        <Grid item >
+                    {repos && repos.length !== 0 && (
+                        <Grid item data-aos="fade-left"  className={classes.reposContainer}>
                             {filteredRepos.map(repo => {
                                 return (
                                     <ReposItem
@@ -148,9 +137,7 @@ const CurrentUserScreen = () => {
                 </Grid >
             </Paper >
         </Grid >
-    )
-        ;
-
+    );
 };
 
 export default CurrentUserScreen;
