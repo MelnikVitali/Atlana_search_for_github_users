@@ -29,7 +29,7 @@ const theme = createTheme({
                 '#root': {
                     minHeight: '100%',
                     height: '100vh',
-                    width:'100%',
+                    width: '100%',
                 },
                 ':focus': {
                     outline: 'none'
@@ -38,32 +38,6 @@ const theme = createTheme({
                     textDecoration: 'none !important',
                 },
             },
-        },
-        MuiFormLabel: {
-            root: {
-                '&.Mui-disabled': {
-                    color: ' rgba(0, 0, 0, 0.54)'
-                }
-            },
-            asterisk: {
-                display: 'none'
-            }
-        },
-        MuiFormHelperText: {
-            root: {
-                minHeight: pxToRem(22),
-                position: 'absolute',
-                bottom: pxToRem(-24),
-                left: pxToRem(-10)
-            }
-        },
-        MuiInputBase: {
-            root: {
-                position: 'relative',
-                '&.Mui-disabled': {
-                    color: 'initial'
-                }
-            }
         },
         MuiButton: {
             root: {
@@ -76,12 +50,7 @@ const theme = createTheme({
             border: `2px `,
         }
     },
-    MuiOutlinedInput: {
-        notchedOutline: {
-            top: pxToRem(-4.5),
-        }
-    },
-    'MuiGrid-spacing-xs-2':{
+    'MuiGrid-spacing-xs-2': {
         margin: 0
     }
 });

@@ -16,17 +16,17 @@ const ScreenContainer = () => {
     const {isOpenDisplayUser} = useSelector(usersSelector);
 
     return (
-            <Grid container
-                  component="main"
+        <Grid container
+              component="main"
 
-                  className={classes.container}
-            >
-                <UsersScreen />
-                {
-                    isOpenDisplayUser &&
-                    <CurrentUserScreen />
-                }
-            </Grid >
+              className={classes.container}
+        >
+            <UsersScreen />
+            {
+                isOpenDisplayUser &&
+                <CurrentUserScreen />
+            }
+        </Grid >
     );
 };
 

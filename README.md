@@ -1,3 +1,86 @@
+# GitHub user search App
+## Atlana React Test Task 
+
+[Deployed App on GitHub Pages](https://melnikvitali.github.io/Atlana_search_for_github_users/)
+
+Author: Vitalii Melnyk
+
+## Technology Stack
+
+- React with React Hooks
+- React styles & libraries: Material-UI
+- Redux
+- Redux-toolkit
+- axios
+- lodash.debounce
+- react-toastify
+- aos
+__________________________________________________________________
+## Technical Requirements
+Please build a web application that is able to search through GitHub
+users and their corresponding projects using the GitHub api:
+https://docs.github.com/en/rest using React. The application
+shall contain 2 screens.
+
+The first screen will contain a search bar that can search through any
+user on the GitHub website at the top with a list of results underneath.  
+Each item should contain the avatar image, username, and the
+number of repositories they have.  The list view shall not be
+paginated.  Additionally, the search will automatically update upon
+each letter entered.
+
+Tapping on a user will bring up a screen that contains the profile
+details of that user.  The view should contain their avatar image,
+username, number of followers, number of following, biography, email,
+location, join date, and a list of public repositories with a search bar a
+t the top. Each item of the list view shall contain the name of the
+repository, the number of stars, and the Number of forks. The search
+bar will allow the user to search through the user’s repository. The list
+view shall not be paginated. Additionally, the search will automatically
+update upon each letter entered.
+
+Tapping on a repository shall bring the user to a web browser and open
+the repository in the GitHub website.
+You shall be given 24 hours to complete this task.
+
+The application will be used during the interview, please be ready to
+explain and defend your choices for technologies and coding paradigms.
+Nice to have - All results should be cached such that when going
+back, the results should still be displayed on the previous screen.
+
+The application shall be hosted on your own GitHub.
+
+Also make sure that the application completely works before submitting it.
+
+Preferable technology - TypeScript
+
+Bonus Points:
+● Please add something that seems “cool feature” for you. It could be
+CSS animation, Typescript code snippet, color theme - anything you
+want. Main requirement - realization time should not exceed 1 hour.
+
+![img.png](img.png)
+  _________________________________________________________
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 # Getting Started with Create React Index
 
 This project was bootstrapped with [Create React Index](https://github.com/facebook/create-react-app).

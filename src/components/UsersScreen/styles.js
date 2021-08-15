@@ -1,9 +1,10 @@
 import { pxToRem } from '../../utils/pxToRem';
 
-const {makeStyles} = require('@material-ui/core');
+import { makeStyles } from '@material-ui/core';
+
 const useStyles = makeStyles(theme => ({
     root: {
-        marginRight:pxToRem(10)
+        marginRight: pxToRem(10)
     },
     container: {
         padding: pxToRem(3),
@@ -23,9 +24,8 @@ const useStyles = makeStyles(theme => ({
     },
     searchContainer: {
         position: 'relative',
-        width:'100%',
-        boxSizing:'border-box',
-        // overflow: 'hidden',
+        width: '100%',
+        boxSizing: 'border-box',
         padding: `${pxToRem(18)} ${pxToRem(36)} ${pxToRem(28)}`,
         [theme.breakpoints.down('md')]: {
             paddingLeft: pxToRem(14),
@@ -36,15 +36,13 @@ const useStyles = makeStyles(theme => ({
             paddingRight: pxToRem(6),
         },
     },
-    searchBar: {},
     preloader: {
         position: 'absolute',
         width: '100%',
         bottom: 0,
         left: 0,
-        right:0
+        right: 0
     },
-
 }));
 
 export default useStyles;

@@ -7,9 +7,17 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MelnikVitali/Processica_Full-stack_test-task_client"
+    "url": "https://github.com/MelnikVitali/Atlana_search_for_github_users"
   },
   "homepage": "https://MelnikVitali.github.io/Atlana_search_for_github_users",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
@@ -17,11 +25,8 @@
     "@reduxjs/toolkit": "^1.6.1",
     "aos": "^2.3.4",
     "axios": "^0.21.1",
-    "clsx": "^1.1.1",
     "gh-pages": "^3.2.3",
-    "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
     "material-ui-search-bar": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -30,14 +35,6 @@
     "react-toastify": "^7.0.4",
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9"
-  },
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

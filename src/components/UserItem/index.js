@@ -1,19 +1,19 @@
 import React from 'react';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { Avatar,  Button,  Grid, Paper, Typography } from '@material-ui/core';
+import { Avatar, Button, Grid, Paper, Typography } from '@material-ui/core';
 
-import {  usersSelector } from '../../store/usersReducers';
+import { usersSelector } from '../../store/usersReducers';
 
 import useStyles from './styles';
 
 const UserItem = ({user, handleDisplayCurrentUser}) => {
     const classes = useStyles();
 
-    const { users} = useSelector(usersSelector);
+    const {users} = useSelector(usersSelector);
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} >
             <Button
                 fullWidth
                 onClick={() => handleDisplayCurrentUser(user.login, users)}
@@ -32,9 +32,9 @@ const UserItem = ({user, handleDisplayCurrentUser}) => {
                         </Typography >
                     </Grid >
                     <Grid item xs={12} sm={4} md={2} >
-                            <Typography noWrap className={classes.repos} >
-                                Repo:&nbsp;{users[user.login].user.public_repos === 0 ? 0 : users[user.login].user.public_repos}
-                            </Typography >
+                        <Typography noWrap className={classes.repos} >
+                            Repo:&nbsp;{users[user.login].user.public_repos === 0 ? 0 : users[user.login].user.public_repos}
+                        </Typography >
                     </Grid >
                 </Grid >
             </Button >

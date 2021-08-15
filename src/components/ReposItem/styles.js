@@ -1,26 +1,27 @@
 import { pxToRem } from '../../utils/pxToRem';
 
-const {makeStyles} = require('@material-ui/core');
+import { makeStyles } from '@material-ui/core';
+
 const useStyles = makeStyles(theme => ({
     paper: {
         backgroundColor: theme.palette.background.default,
-        margin:pxToRem(6),
+        margin: pxToRem(6),
         display: 'flex'
     },
     gridContainer: {
         padding: pxToRem(12),
         alignItems: 'center',
     },
-    link:{
-      width:'100%',
-      height:'100%'
+    link: {
+        width: '100%',
+        height: '100%'
     },
     large: {
         width: pxToRem(56),
         height: pxToRem(56),
     },
     userName: {
-        textAlign:'left',
+        textAlign: 'left',
         paddingLeft: pxToRem(30),
         [theme.breakpoints.down('sm')]: {
             paddingLeft: pxToRem(25),
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'right'
     },
     preloader: {
-        float:'right'
+        float: 'right'
     },
 }));
 

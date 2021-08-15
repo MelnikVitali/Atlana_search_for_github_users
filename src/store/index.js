@@ -9,5 +9,5 @@ const rootReducer = combineReducers({
 });
 export const store = configureStore({
     reducer: rootReducer,
-    devTools:[ devToolsEnhancer({ realtime: true }) ]
+    devTools: [devToolsEnhancer({realtime: true})]
 });

@@ -8,7 +8,6 @@ const ReposItem = ({repo}) => {
     const classes = useStyles();
 
     return (
-
         <Paper className={classes.paper} >
             <Link href={repo.html_url} underline="none" className={classes.link} >
                 <Button fullWidth >

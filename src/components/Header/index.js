@@ -12,14 +12,14 @@ const Header = () => {
         <AppBar className={classes.root} >
             <Toolbar className={classes.toolBar} >
                 <IconButton
-                    size='small'
+                    size="small"
                     edge="start"
                     className={classes.menuButton}
                     color="inherit"
                     aria-label="open drawer"
                 >
                     <GitHubIcon />
-                </IconButton>
+                </IconButton >
                 <Typography
                     component="h1"
                     variant="h6"

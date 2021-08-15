@@ -63,7 +63,7 @@ const UsersScreen = () => {
     }, []);
 
     return (
-        <Grid item sm={6} xs={12} className={classes.root}>
+        <Grid item sm={6} xs={12} className={classes.root} >
             <Paper className={classes.paper} elevation={3} >
                 <Grid container direction="column" className={classes.container} >
                     <Grid item className={classes.titleContainer} >
@@ -71,21 +71,19 @@ const UsersScreen = () => {
                             GitHub Searcher
                         </Typography >
                     </Grid >
-                    <Grid item className={classes.searchContainer}>
+                    <Grid item className={classes.searchContainer} >
                         <SearchBar
                             onChange={newValue => debouncedChangeHandler(newValue)}
                             placeholder="Search for Users"
                             onCancelSearch={cancelSearch}
                             onRequestSearch={cancelSearch}
                             className={classes.searchBar}
-                       />
-                            {loading && !isOpenDisplayUser && (
-                                <LinearProgress color="secondary" className={classes.preloader} />
-                            )}
-
-
+                        />
+                        {loading && !isOpenDisplayUser && (
+                            <LinearProgress color="secondary" className={classes.preloader} />
+                        )}
                     </Grid >
-                    {queriedUsers.length !== 0 && query !== '' &&  isCurrentUsers &&(
+                    {queriedUsers.length !== 0 && query !== '' && isCurrentUsers && (
                         <Grid item data-aos="fade-right" >
                             {queriedUsers.map(user => {
                                 return (

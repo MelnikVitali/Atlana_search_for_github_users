@@ -13,6 +13,7 @@ const App = () => {
             duration: 700
         });
     }, []);
+
     return (
         <>
             <Header />

@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import { Avatar,  Grid, LinearProgress, Paper, Typography } from '@material-ui/core';
+import { Avatar, Grid, LinearProgress, Paper, Typography } from '@material-ui/core';
 import SearchBar from 'material-ui-search-bar';
 
 import ReposItem from '../ReposItem';
 
-import {  usersSelector } from '../../store/usersReducers';
+import { usersSelector } from '../../store/usersReducers';
 
 import useStyles from './styles';
 
@@ -21,6 +21,7 @@ const CurrentUserScreen = () => {
         currentUser,
         isOpenDisplayUser
     } = useSelector(usersSelector);
+
     const [value, setValue] = useState('');
     const [dbValue, saveToDb] = useState('');
 
@@ -33,7 +34,6 @@ const CurrentUserScreen = () => {
             cancelSearch();
         };
     }, [currentUser]);
-
 
     if (dbValue !== '' && (repos && repos.length !== 0)) {
         filteredRepos = repos.filter((repo) => {
@@ -66,9 +66,8 @@ const CurrentUserScreen = () => {
                             GitHub Searcher
                         </Typography >
                     </Grid >
-
-                    <Grid item xs={12}  md={12} >
-                        <Grid container alignItems="center" spacing={2} className={classes.containerUser}>
+                    <Grid item xs={12} md={12} >
+                        <Grid container alignItems="center" spacing={2} className={classes.containerUser} >
                             <Grid item md={6} >
                                 <Avatar
                                     alt={user.login}
@@ -107,7 +106,7 @@ const CurrentUserScreen = () => {
                             </Grid >
                         </Grid >
                     </Grid >
-                    <Grid item className={classes.searchContainer}>
+                    <Grid item className={classes.searchContainer} >
                         <SearchBar
                             value={value}
                             placeholder="Search for User's Repositories"
@@ -122,7 +121,7 @@ const CurrentUserScreen = () => {
                     </Grid >
 
                     {repos && repos.length !== 0 && (
-                        <Grid item data-aos="fade-left"  className={classes.reposContainer}>
+                        <Grid item data-aos="fade-left" className={classes.reposContainer} >
                             {filteredRepos.map(repo => {
                                 return (
                                     <ReposItem

@@ -41,19 +41,6 @@ const usersSlice = createSlice({
             state.isCurrentUsers = true;
             state.error = null;
         },
-        // getCurrentUserSuccess: (state, {payload}) => {
-        //     state.users = {
-        //         ...state.users,
-        //         [payload.login]: {
-        //             user: {
-        //                 ...payload
-        //             },
-        //             repos: []
-        //         }
-        //     };
-        //     state.loading = false;
-        //     state.error = null;
-        // },
         getCurrentUserReposSuccess: (state, {payload: {repos, login}}) => {
             if (repos.length === 0) {
                 state.users[login].repos = null;
@@ -67,7 +54,6 @@ const usersSlice = createSlice({
             state.isCurrentUserRepos = true;
             state.currentUser = login;
         },
-
         getCurrentUser: (state, {payload}) => {
             state.currentUser = payload;
             state.isCurrentUsers = true;
@@ -102,7 +88,6 @@ export const {
     getUsersSuccess,
     getCurrentUsersSuccess,
     getCurrentUser,
-    // getCurrentUserSuccess,
     getCurrentUserReposSuccess,
     getError,
     clearResults,
@@ -116,6 +101,7 @@ export default usersSlice.reducer;
 export const fetchQueriedUsers = (searchParams) => {
     return async dispatch => {
         dispatch(startLoading());
+
         try {
             const response = await axios.get(`${APIUrls.searchUsers}${searchParams}&${APIUrls.gitHubQuerySettingsUsers}`);
 
