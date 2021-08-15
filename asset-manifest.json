@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/Atlana_search_for_github_users/static/js/main.29fa9f84.chunk.js",
-    "main.js.map": "/Atlana_search_for_github_users/static/js/main.29fa9f84.chunk.js.map",
+    "main.js": "/Atlana_search_for_github_users/static/js/main.053dd44a.chunk.js",
+    "main.js.map": "/Atlana_search_for_github_users/static/js/main.053dd44a.chunk.js.map",
     "runtime-main.js": "/Atlana_search_for_github_users/static/js/runtime-main.f7c2e4f3.js",
     "runtime-main.js.map": "/Atlana_search_for_github_users/static/js/runtime-main.f7c2e4f3.js.map",
     "static/css/2.d45ee21d.chunk.css": "/Atlana_search_for_github_users/static/css/2.d45ee21d.chunk.css",
-    "static/js/2.5e6cd121.chunk.js": "/Atlana_search_for_github_users/static/js/2.5e6cd121.chunk.js",
-    "static/js/2.5e6cd121.chunk.js.map": "/Atlana_search_for_github_users/static/js/2.5e6cd121.chunk.js.map",
+    "static/js/2.473933a0.chunk.js": "/Atlana_search_for_github_users/static/js/2.473933a0.chunk.js",
+    "static/js/2.473933a0.chunk.js.map": "/Atlana_search_for_github_users/static/js/2.473933a0.chunk.js.map",
     "index.html": "/Atlana_search_for_github_users/index.html",
     "static/css/2.d45ee21d.chunk.css.map": "/Atlana_search_for_github_users/static/css/2.d45ee21d.chunk.css.map",
-    "static/js/2.5e6cd121.chunk.js.LICENSE.txt": "/Atlana_search_for_github_users/static/js/2.5e6cd121.chunk.js.LICENSE.txt"
+    "static/js/2.473933a0.chunk.js.LICENSE.txt": "/Atlana_search_for_github_users/static/js/2.473933a0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f7c2e4f3.js",
     "static/css/2.d45ee21d.chunk.css",
-    "static/js/2.5e6cd121.chunk.js",
-    "static/js/main.29fa9f84.chunk.js"
+    "static/js/2.473933a0.chunk.js",
+    "static/js/main.053dd44a.chunk.js"
   ]
 }
