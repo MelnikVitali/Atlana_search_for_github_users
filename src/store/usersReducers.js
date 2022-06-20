@@ -3,6 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { APIUrls } from '../configs/APIUrls';
+import { gitHubConfigs } from '../configs/gitHubConfigs';
 
 export const initialState = {
     loading: false,
@@ -31,7 +32,7 @@ const usersSlice = createSlice({
         },
         getCurrentUsersSuccess: (state, {payload}) => {
             const newUsers = payload.reduce((acc, item) => {
-                acc[item.login] = {user: item, repos: []}
+                acc[item.login] = {user: item, repos: []};
                 return acc;
             }, {});
 
@@ -72,7 +73,7 @@ const usersSlice = createSlice({
         },
         toggleDisplayCurrentUser: (state, {payload}) => {
             if (payload) {
-                state.isOpenDisplayUser = payload
+                state.isOpenDisplayUser = payload;
             } else {
                 state.isCurrentUsers = false;
                 state.currentUser = null;
@@ -103,7 +104,11 @@ export const fetchQueriedUsers = (searchParams) => {
         dispatch(startLoading());
 
         try {
-            const response = await axios.get(`${APIUrls.searchUsers}${searchParams}&${APIUrls.gitHubQuerySettingsUsers}`);
+            const response = await axios.get(`${APIUrls.searchUsers}${searchParams}${APIUrls.gitHubQuerySettingsUsers}`, {
+                headers: {
+                    Authorization: `token ${gitHubConfigs.githubToken}`,
+                }
+            });
 
             if (response) {
                 dispatch(getUsersSuccess(response.data.items));
@@ -126,7 +131,11 @@ export const fetchCurrentUsers = (queriedUsers, users) => {
 
                 for (let user of queriedUsers) {
                     if (Object.entries(users).length === 0 || !(users.hasOwnProperty(user.login))) {
-                        const response = await axios.get(`${APIUrls.searchUser}${user.login}?${APIUrls.gitHubQuerySettingsUsers}`);
+                        const response = await axios.get(`${APIUrls.searchUser}${user.login}?${APIUrls.gitHubQuerySettingsUsers}`, {
+                            headers: {
+                                Authorization: `token ${gitHubConfigs.githubToken}`,
+                            }
+                        });
 
                         currentUsers = [...currentUsers, response.data];
                     }
@@ -149,7 +158,11 @@ export const fetchCurrentUserRepos = (login, users) => {
 
         try {
             if ((users[login].repos && users[login].repos.length === 0) || !(users.hasOwnProperty(login))) {
-                const response = await axios.get(`${APIUrls.searchUser}${login}${APIUrls.gitHubQuerySettingsRepos}`);
+                const response = await axios.get(`${APIUrls.searchUser}${login}${APIUrls.gitHubQuerySettingsRepos}`, {
+                    headers: {
+                        Authorization: `token ${gitHubConfigs.githubToken}`,
+                    }
+                });
 
                 if (response) {
                     await dispatch(getCurrentUserReposSuccess({login, repos: response.data}));
