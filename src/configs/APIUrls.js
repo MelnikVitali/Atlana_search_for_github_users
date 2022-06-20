@@ -3,6 +3,6 @@ export const APIUrls = {
     searchUsers: `https://api.github.com/search/users?q=`,
     searchUser: `https://api.github.com/users/`,
     gitHubQuerySettingsUsers: `&per_page=20`,
-    gitHubQuerySettingsRepos: `/repos?type=all&sort=updated&per_page=100`,
+    gitHubQuerySettingsRepos: `/repos?type=all&sort=updated&per_page=100`
 };
 
