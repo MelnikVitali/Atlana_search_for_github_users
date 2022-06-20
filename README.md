@@ -1,7 +1,7 @@
 # GitHub user search App
 ## Atlana React Test Task 
 
-[Deployed App on GitHub Pages](https://melnikvitali.github.io/Atlana_search_for_github_users/)
+[Deployed App on Netlify](https://github-searcher-user.netlify.app/)
 
 Author: Vitalii Melnyk
 
