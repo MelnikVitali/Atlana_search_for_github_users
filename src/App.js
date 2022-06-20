@@ -19,7 +19,7 @@ const App = () => {
             <Header />
             <ScreenContainer />
         </>
-    )
+    );
 };
 
 export default App;
