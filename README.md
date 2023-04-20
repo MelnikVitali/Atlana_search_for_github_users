@@ -8,7 +8,6 @@ Author: Vitalii Melnyk
 ## Technology Stack
 
 - React with React Hooks
-- TypeScript
 - React styles & libraries: Material-UI
 - Redux
 - Redux-toolkit
